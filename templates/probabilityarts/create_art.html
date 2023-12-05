@@ -1,3 +1,9 @@
-{% extends "base.html" %}
+{% comment %} {% extends "base.html" %} {% endcomment %} {% load static %}
 
-<h1>Create Your Probability Art</h1>
+<h1>This is the art you created!!</h1>
+
+<h1>Number of Starting Points:{{n}}</h1>
+<h1>Probability Distribution:{{distribution}}</h1>
+<h1>Base Image:{{baseImage}}</h1>
+
+<img src="{% static 'createdArt/created.jpg' %}" alt="Your Image" />

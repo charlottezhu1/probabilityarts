@@ -1,28 +1,26 @@
+from django.views.generic.base import View
 from django.shortcuts import render
 from django.contrib.auth.models import User
 import json
 from django.http import JsonResponse
+from utils.probabilityArtist import createImage
+from PIL import Image
 
-# Create your views here.
-# def index(request):
-#         return render(request, "probabilityarts/index.html")
-    
-# class createArtView(View):
-
-# def post(self, request):
 def index(request):
-    # data = json.loads(request.body)
-    # print(data)
-    # n = data["n"]
-    # distribution = data("distribution")
-    
     return render(request, "probabilityarts/index.html")
-        
-        # if not str(distribution):
-        #     return JsonResponse({"distribution_error": "xxx"})
-        
-
-
+         
 def create_art(request):
-    return render(request, "probabilityarts/create_art.html")
+    n = request.POST["n"]
+    distribution = request.POST["distribution"]
+    baseImage = request.POST["baseImage"]
+    image = createImage(n, baseImage, distribution)
+    
+    image.save('./storefront/static/createdArt/created.jpg')
 
+    print(n, distribution, baseImage)
+    return render(request, "probabilityarts/create_art.html", {"n":n,"distribution":distribution, "baseImage":baseImage })
+ 
+ 
+
+# if not str(distribution):
+        #     return JsonResponse({"distribution_error": "xxx"})
