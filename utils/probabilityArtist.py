@@ -1,7 +1,9 @@
-from PIL import Image, ImageTk, ImageDraw
 import tkinter as tk
 import random
 import numpy as np
+from PIL import Image
+from PIL import ImageTk
+from PIL import ImageDraw
 
 # markov_dict = {}
 

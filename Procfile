@@ -1,1 +1,1 @@
-web: gunicorn storefront.wsgi:application --log-file -
+web: gunicorn storefront.wsgi
