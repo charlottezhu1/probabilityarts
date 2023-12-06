@@ -1,8 +1,7 @@
-import tkinter as tk
+# import tkinter as tk
 import random
 import numpy as np
 from PIL import Image
-from PIL import ImageTk
 from PIL import ImageDraw
 
 # markov_dict = {}
@@ -218,18 +217,18 @@ def draw_starting_points(image, pixel_set):
 
 
 ## DISPLAY IMAGE ##
-def show_image(img, n, sample_index):
-    root = tk.Tk()
-    # sampling_ways = ["random", "pareto", "normal"]
-    # sample = sampling_ways[sample_index]
-    root.title("Your Art - created with " + str(n) + " starting points from " +  sample_index + " ~!")
+# def show_image(img, n, sample_index):
+#     root = tk.Tk()
+#     # sampling_ways = ["random", "pareto", "normal"]
+#     # sample = sampling_ways[sample_index]
+#     root.title("Your Art - created with " + str(n) + " starting points from " +  sample_index + " ~!")
     
-    tk_image = ImageTk.PhotoImage(img)
+#     tk_image = ImageTk.PhotoImage(img)
     
-    label = tk.Label(root, image=tk_image)
-    label.pack()
+#     label = tk.Label(root, image=tk_image)
+#     label.pack()
     
-    root.mainloop()
+#     root.mainloop()
                        
 if __name__ == '__main__':
     createImage(10, "sunset1","Uniform Distribution")                        
