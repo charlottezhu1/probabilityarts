@@ -1,6 +1,6 @@
 # probabilityarts
 
-Hi! Welcome to the Probability Art Project. Here're descriptions of some key components!
+Hi! Welcome to the Probability Art Project. Here're some basic descriptions of key components!
 
 utils: functionality folder
 assets -- base images
