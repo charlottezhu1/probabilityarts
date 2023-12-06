@@ -19,19 +19,6 @@
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
           <a href="#" class="navbar-brand d-flex align-items-center">
-            {% comment %} <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              aria-hidden="true"
-              class="me-2"
-              viewBox="0 0 24 24"
-            > {% endcomment %}
               <path
                 d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
               />
@@ -44,19 +31,19 @@
     </header>
 
     <main>
-      <footer class="text-body-secondary py-5">
-        <section class="py-5 text-center container">
+       <footer style="background-image: url('https://dgcfnvaratrfzwofqohg.supabase.co/storage/v1/object/public/GalleryArt/background5.png');"class="text-body-secondary py-5"> 
+        <section  class="py-5 text-center container">
           <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-              <h1 class="fw-light">Create Your Own Probability Art!</h1>
-              <p class="lead text-body-secondary">
-                Upload your own base image, or play with photos taken by the
-                author!
+              <h1 class="fw-light" style="color: white;">Create Your Own Probability Art!</h1>
+              <p style="--bs-text-opacity: 1;
+              color: white">
+                Select a base image, distribution, and number of starting point to create your own probability art!
               </p>
               
               <form action="create" method="post">
                 {% csrf_token %}
-                <label class="col-form-label mt-4" for="baseImage"
+                <label style="color: white;" class="col-form-label mt-4" for="baseImage"
                   >Base Image</label
                 >
                 <select class="form-select" name="baseImage" id="baseImage">
@@ -70,18 +57,18 @@
                   <option>sunset8</option>
                 </select>
         
-                <label class="col-form-label mt-4" for="distribution"
+                <label style="color: white;" class="col-form-label mt-4" for="distribution"
                   >Probability Distribution</label
                 >
                 <select class="form-select" name="distribution" id="distribution">
-                  <option>Uniform Distribution</option>
                   <option>Pareto Distribution</option>
+                  <option>Uniform Distribution</option> 
                   <option>Normal Distribution</option>
                 </select>
                 <fieldset class="form-group">
     
                   <div class="form-group">
-                    <label class="col-form-label mt-4" for="n"
+                    <label style="color: white;" class="col-form-label mt-4" for="n"
                       >Number of Samples (n)</label
                     >
                     <input
@@ -90,17 +77,21 @@
                       placeholder="type a positive integer"
                       id="n"
                       name="n"
+                      value="5"
                     />
                   </div>
-                  
+                  <br>
                   <input type="submit" value="submit" class="btn btn-primary my-2">
-                  
+                  <br>
+                  <label style="color: white;" class="col-form-label mt-4" for="n"
+                      >Might take up to 10 seconds after hitting "submit"!</label
+                    >
                 {% comment %} <button type="button" id="create" class="btn btn-primary my-2">
                   Let's Go!!! onclick = "generateGraph()"
                 </button> {% endcomment %}
                 {% comment %} <script src="{% static "js/createarts.js" %}"></script> {% endcomment %}
               
-            
+              </footer>
             
             </form>
             </div>
@@ -108,20 +99,21 @@
         </section>
       
       
-      <section class="py-5 text-center container">
-        <div class="row py-lg-5">
-          <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Probability Art Gallery</h1>
-            <p class="lead text-body-secondary">
-              Art Created with Markov Chain, Probability Distribution, and
-              Random Walk Algorithm.
-            </p>
-          </div>
-        </div>
-      </section>
 
       <div class="album py-5 bg-body-tertiary">
         <div class="container">
+          <section class="py-5 text-center container">
+          <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fw-light">Probability Art Gallery</h1>
+              <p class="lead text-body-secondary">
+                Art Created with Markov Chain, Probability Distributions, and
+                Random Walk Algorithm.
+              </p>
+            </div>
+          </div>
+        </section>
+
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
               <div class="card shadow-sm">
@@ -141,6 +133,7 @@
                     href="https://dgcfnvaratrfzwofqohg.supabase.co/storage/v1/object/public/GalleryArt/Screen%20Shot%202023-11-30%20at%206.23.41%20PM.png"
                     width="100%"
                     height="100%"
+                    preserveAspectRatio="xMidYMid slice"
                   />
                 </svg>
                 <div class="card-body">
@@ -151,24 +144,58 @@
                     class="d-flex justify-content-between align-items-center"
                   >
                     <div class="btn-group">
-                      <button
+                      {% comment %} <button
                         type="button"
                         class="btn btn-sm btn-outline-secondary"
                       >
                         View
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
+                      </button> {% endcomment %}
+                      
                     </div>
                     <small class="text-body-secondary"></small>
                   </div>
                 </div>
               </div>
             </div>
+            
+            <div class="col">
+              <div class="card shadow-sm">
+                <svg
+                  class="bd-placeholder-img card-img-top"
+                  width="100%"
+                  height="225"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  aria-label="Placeholder: Thumbnail"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                >
+                  <rect width="100%" height="100%" fill="#55595c" />
+
+                  <image
+                    href="https://dgcfnvaratrfzwofqohg.supabase.co/storage/v1/object/public/GalleryArt/Screen%20Shot%202023-12-02%20at%201.02.49%20AM.png"
+                    width="100%"
+                    height="100%"
+                    preserveAspectRatio="xMidYMid slice"
+                  />
+                </svg>
+
+                <div class="card-body">
+                  <p class="card-text">
+                    Pareto Distribution, 20 randomly sampled starting points.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group">
+                      
+                    </div>
+                    <small class="text-body-secondary"></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="col">
               <div class="card shadow-sm">
                 <svg
@@ -188,6 +215,7 @@
                     href="https://dgcfnvaratrfzwofqohg.supabase.co/storage/v1/object/public/GalleryArt/Screen%20Shot%202023-12-02%20at%201.30.26%20AM.png"
                     width="100%"
                     height="100%"
+                    preserveAspectRatio="xMidYMid slice"
                   />
                 </svg>
                 <div class="card-body">
@@ -199,18 +227,16 @@
                     class="d-flex justify-content-between align-items-center"
                   >
                     <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
+                      
                     </div>
                     <small class="text-body-secondary"></small>
                   </div>
                 </div>
               </div>
             </div>
+
+
+
             <div class="col">
               <div class="card shadow-sm">
                 <svg
@@ -223,12 +249,13 @@
                   preserveAspectRatio="xMidYMid slice"
                   focusable="false"
                 >
+                  <title>Placeholder</title>
                   <rect width="100%" height="100%" fill="#55595c" />
-
                   <image
                     href="https://dgcfnvaratrfzwofqohg.supabase.co/storage/v1/object/public/GalleryArt/Screen%20Shot%202023-12-02%20at%203.57.19%20PM.png"
                     width="100%"
                     height="100%"
+                    preserveAspectRatio="xMidYMid slice"
                   />
                 </svg>
                 <div class="card-body">
@@ -239,12 +266,79 @@
                     class="d-flex justify-content-between align-items-center"
                   >
                     <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
+                      
+                    </div>
+                    <small class="text-body-secondary"></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <svg
+                  class="bd-placeholder-img card-img-top"
+                  width="100%"
+                  height="225"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  aria-label="Placeholder: Thumbnail"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                >
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#55595c" />
+                  <image
+                    href="https://dgcfnvaratrfzwofqohg.supabase.co/storage/v1/object/public/GalleryArt/Screen%20Shot%202023-12-02%20at%201.27.43%20AM.png"
+                    width="100%"
+                    height="100%"
+                    preserveAspectRatio="xMidYMid slice"
+                  />
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">
+                    Normal Distribution, 400 randomly sampled starting points.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group">
+                      
+                    </div>
+                    <small class="text-body-secondary"></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <svg
+                  class="bd-placeholder-img card-img-top"
+                  width="100%"
+                  height="225"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  aria-label="Placeholder: Thumbnail"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                >
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#55595c" />
+                  <image
+                    href="https://dgcfnvaratrfzwofqohg.supabase.co/storage/v1/object/public/GalleryArt/Screen%20Shot%202023-12-05%20at%202.07.25%20PM.png"
+                    width="100%"
+                    height="100%"
+                    preserveAspectRatio="xMidYMid slice"
+                  />
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">
+                    Uniform Distribution, 1 randomly sampled starting points.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group">
+                      
                     </div>
                     <small class="text-body-secondary"></small>
                   </div>
@@ -266,26 +360,59 @@
                 >
                   <title>Placeholder</title>
                   <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                    Thumbnail
-                  </text>
+                  <image
+                    href="https://dgcfnvaratrfzwofqohg.supabase.co/storage/v1/object/public/GalleryArt/Screen%20Shot%202023-12-05%20at%201.45.54%20PM.png"
+                    width="100%"
+                    height="100%"
+                    preserveAspectRatio="xMidYMid slice"
+                  />
                 </svg>
                 <div class="card-body">
                   <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
+                    Pareto Distribution on X-axis, Normal Distribution on
+                    Y-axis, 10 randomly sampled starting points.
                   </p>
                   <div
                     class="d-flex justify-content-between align-items-center"
                   >
                     <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
+                      
+                    </div>
+                    <small class="text-body-secondary"></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <svg
+                  class="bd-placeholder-img card-img-top"
+                  width="100%"
+                  height="225"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  aria-label="Placeholder: Thumbnail"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                >
+                  <title>Placehoßlder</title>
+                  <rect width="100%" height="100%" fill="#55595c" />
+                  <image
+                    href="https://dgcfnvaratrfzwofqohg.supabase.co/storage/v1/object/public/GalleryArt/Screen%20Shot%202023-12-05%20at%202.26.16%20PM.png"
+                    width="100%"
+                    height="100%"
+                    preserveAspectRatio="xMidYMid slice"
+                  />
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">
+                    Uniform Distribution, 80 randomly sampled starting points.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group">
+                      
                     </div>
                     <small class="text-body-secondary"></small>
                   </div>
@@ -306,211 +433,22 @@
                 >
                   <title>Placeholder</title>
                   <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                    Thumbnail
-                  </text>
+                  <image
+                    href="https://dgcfnvaratrfzwofqohg.supabase.co/storage/v1/object/public/GalleryArt/Screen%20Shot%202023-12-05%20at%201.53.52%20PM.png"
+                    width="100%"
+                    height="100%"
+                    preserveAspectRatio="xMidYMid slice"
+                  />
                 </svg>
                 <div class="card-body">
                   <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
+                    Normal Distribution, 1 randomly sampled starting points.
                   </p>
                   <div
                     class="d-flex justify-content-between align-items-center"
                   >
                     <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                    </div>
-                    <small class="text-body-secondary"></small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                    Thumbnail
-                  </text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small class="text-body-secondary"></small>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                    Thumbnail
-                  </text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small class="text-body-secondary"></small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                    Thumbnail
-                  </text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small class="text-body-secondary"></small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                    Thumbnail
-                  </text>
-                </svg>
-                <div class="card-body">
-                  <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
+                      
                     </div>
                     <small class="text-body-secondary"></small>
                   </div>
@@ -524,16 +462,21 @@
 
     
 
-      
+    <br>
 
       <div class="container">
+        <p class="lead text-body-secondary">
+          Notes: all base images with the name "sunset" are photos of sunsets taken by the creator of this website. The base images for the background picture and last three pictures in the gallery are downloaded from https://unsplash.com/.
+        </p>
+
         <p class="float-end mb-1">
+          
           <a href="#">Back to top</a>
         </p>
       </div>
 
 
-    </footer>
+    
 
   </body>
 </html>

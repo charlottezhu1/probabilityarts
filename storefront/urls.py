@@ -23,4 +23,5 @@ urlpatterns = [
     # path("playground/", include("playground.urls")),
     path("", include("probabilityarts.urls")),
     
+    
 ]

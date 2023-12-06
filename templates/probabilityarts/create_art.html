@@ -1,9 +1,177 @@
-{% comment %} {% extends "base.html" %} {% endcomment %} {% load static %}
+{% comment %} {% extends "base.html" %} {% endcomment %} {% load static %} <link
+href="{% static "css/bootstrap.min.css"%}" rel="stylesheet" > <link href="{%
+static "css/main.css"%}" rel="stylesheet" >
 
-<h1>This is the art you created!!</h1>
 
-<h1>Number of Starting Points:{{n}}</h1>
-<h1>Probability Distribution:{{distribution}}</h1>
-<h1>Base Image:{{baseImage}}</h1>
+<html lang="en" data-bs-theme="auto">
+  <head>
 
-<img src="{% static 'createdArt/created.jpg' %}" alt="Your Image" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>
+      Probability Art {% block title %} {% endblock %}
+    </title>
+     <link href="{% static "css/bootstrap.min.css"%}"
+    rel="stylesheet" > <link href="{% static "css/main.css"%}" rel="stylesheet"
+    >
+
+  </head>
+  <body>
+
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+              <path
+                d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
+              />
+              <circle cx="12" cy="13" r="4" />
+            </svg>
+            <strong>Create Art with Probability Artist</strong>
+            
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      
+        <section class="py-5 text-center container">
+          <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fw-light">This is the art you created!!</h1>
+              <br>
+              <br>
+              <span class="d-block text-center">
+                <img src="{% static 'createdArt/created.jpg' %}" alt="Your Image" style="display: block; margin: 0 auto;" width="100%"
+                height="600"/>
+             </span>
+              <br>
+              <br>
+              <br>
+             
+
+              <h1 class="fw-light">Details about your Art</h1>
+              <br>
+              <br>
+              <p class="lead text-body-secondary">
+                <span class="d-block text-center">Number of Starting Points: {{n}}</span>
+                <span class="d-block text-center">Probability Distribution: {{distribution}}</span>
+                <span class="d-block text-center">Base Image: {{baseImage}}</span>
+              </p>
+
+              <br>
+              <br>
+
+              <span class="d-block text-center">
+                <img src="{% static 'createdArt/'%}{{ baseImage }}.jpg"
+                 alt="Your Image" style="display: block; margin: 0 auto;" width="100%"
+                height="600"/>
+             </span>
+             <br>
+             <p class="lead text-body-secondary">
+                <span class="d-block text-center">This is the base image! (photo by Charlotte Zhu)</span>
+              </p>
+
+              <br>
+              <br>
+
+              <span class="d-block text-center">
+                <img src="{% static 'createdArt/startingpoints.jpg' %}" alt="Your Image" style="display: block; margin: 0 auto; border: 2px solid black;"
+                width="100%"
+                height="600"/>
+             </span>
+             <br>
+             <p class="lead text-body-secondary">
+                <span class="d-block text-center">Starting points of the current art!</span>
+              </p>
+
+              <br>
+              <br>
+
+              <h1 class="fw-light">Creation Process</h1>
+              <br>
+              <br>
+              <span class="d-block text-center">
+                <img src="{% static 'createdArt/step1.jpg' %}" alt="Step1 of the creation process" style="display: block; margin: 0 auto; border: 2px solid black;"
+                width="100%"
+                height="600"/>
+             </span>
+             <br>
+             <p class="lead text-body-secondary">
+                <span class="d-block text-center">Step 1</span>
+              </p>
+
+             
+             <br>
+             <span class="d-block text-center">
+              <img src="{% static 'createdArt/step2.jpg' %}" alt="Step2 of the creation process" style="display: block; margin: 0 auto; border: 2px solid black;"
+              width="100%"
+              height="600"/>
+              </span>
+              <br>
+              <p class="lead text-body-secondary">
+                 <span class="d-block text-center">Step 2</span>
+               </p>
+ 
+              
+              <br>
+                <span class="d-block text-center">
+                <img src="{% static 'createdArt/step3.jpg' %}" alt="Step3 of the creation process" style="display: block; margin: 0 auto; border: 2px solid black;"
+                  width="100%"
+                height="600"/>
+              </span>
+              <br>
+              <p class="lead text-body-secondary">
+                 <span class="d-block text-center">Step 3</span>
+               </p>
+ 
+              
+              <br>
+             <span class="d-block text-center">
+              <img src="{% static 'createdArt/created.jpg' %}" alt="Step4 of the creation process" style="display: block; margin: 0 auto; border: 2px solid black;"
+                 width="100%"
+              height="600"/>
+              </span>
+              <br>
+              <p class="lead text-body-secondary">
+                <span class="d-block text-center">Step 4</span>
+              </p>
+
+             
+             <br>
+                <br>
+             <p class="lead text-body-secondary">
+                <span class="d-block text-center">Refresh the page to create another one!</span>
+                <span class="d-block text-center">Go back to the previous page to change base image and parameters!</span>
+              </p>
+              <br>
+              <br>
+              {% comment %} <button type="button" id="create" class="btn btn-primary my-2">
+                <a href="">
+                Go back!
+              </button>  {% endcomment %}
+              <br>
+              <br>
+            
+              <div class="container">
+        
+                <p class="float-end mb-1">
+                  
+                  <a href="#">Back to top</a>
+                </p>
+              </div>
+
+
+
+
+
+            </div>
+          </div>
+        </section>
+      
+
+  </body>
+</html>
+
+

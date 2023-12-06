@@ -1,9 +1,9 @@
-from PIL import Image, ImageTk
+from PIL import Image, ImageTk, ImageDraw
 import tkinter as tk
 import random
 import numpy as np
 
-markov_dict = {}
+# markov_dict = {}
 
 def createImage(n, baseImage, distribution):
     img = Image.open('/Users/xuyangzhu/Desktop/storefront/utils/assets/sunsets/{}.jpg'.format(baseImage))
@@ -22,7 +22,7 @@ def createImage(n, baseImage, distribution):
 
 ## Loop over pixels in the reference image, create a markov dict ##
 def build_markov(img):
-    global markov_dict
+    markov_dict = {}
     print("it's building markov!")
     
     pixels = img.load()
@@ -82,23 +82,23 @@ def random_walk(markov_dict, n, sampling_method):
             
     # initialize the pixel set
     # Random sampling!
-    if sampling_method == "Uniform Distribution": pixel_set = random_sampling(n, width, height)
+    if sampling_method == "Uniform Distribution": pixel_set = random_sampling(n, width, height, markov_dict)
     
     # Pareto sampling!
-    if sampling_method == "Pareto Distribution": pixel_set = pareto_sampling(n, width, height)
+    if sampling_method == "Pareto Distribution": pixel_set = pareto_sampling(n, width, height, markov_dict)
     
     # Normal sampling!   
-    if sampling_method == "Normal Distribution": pixel_set = normal_sampling(n, width, height)
+    if sampling_method == "Normal Distribution": pixel_set = normal_sampling(n, width, height, markov_dict)
     
     print("coloring the image! just one sec~!")
 
-    # draw_starting_points(image, pixel_set)
+    draw_starting_points(image, pixel_set)
     output = iterative_draw_random(image, markov_dict, pixel_set, uncolored_set)
     return output
 
 
 ## Uniform Distribution ##
-def random_sampling(n, width, height):
+def random_sampling(n, width, height, markov_dict):
     print("using Random Sampling for starting points!")
     pixel_set = set()
     for i in range(n):
@@ -112,7 +112,7 @@ def random_sampling(n, width, height):
 
 
 ## Pareto Distribution ##
-def pareto_sampling(n, width, height):
+def pareto_sampling(n, width, height, markov_dict):
     print("using Pareto Sampling for starting points!")
     pixel_set = set()
     while len(pixel_set) < n:
@@ -131,7 +131,7 @@ def pareto_sampling(n, width, height):
     
     
 ## Normal Distribution ##   
-def normal_sampling(n, width, height):
+def normal_sampling(n, width, height, markov_dict):
     print("using Normal Sampling for starting points!")
     mean_x = width/2
     mean_y = height/2
@@ -156,6 +156,13 @@ def iterative_draw_random(image, markov_dict, pixel_set, uncolored_set):
     
     iteration = 0
     while len(pixel_set) != 0:
+        if iteration == 90000:
+            image.save('./storefront/static/createdArt/step1.jpg')
+        if iteration == 180000:
+            image.save('./storefront/static/createdArt/step2.jpg')
+        if iteration == 270000:
+            image.save('./storefront/static/createdArt/step3.jpg')
+        
         iteration += 1
         elem = pixel_set.pop()
         
@@ -198,19 +205,14 @@ def iterative_draw_random(image, markov_dict, pixel_set, uncolored_set):
 
 def draw_starting_points(image, pixel_set):
     print("drawing starting points on canvas!")
-    root = tk.Tk()
-    img_width, img_height = image.size
-    canvas = tk.Canvas(root, width=img_width, height=img_height, bg="white")
-    
-    root.title("Starting Points of this artwork!")
+    draw = ImageDraw.Draw(image)
     for elem in pixel_set:
         x = elem[0][0]
         y = elem[0][1]
-        color = elem[1]
-        canvas.create_oval(x, y, x+2, y+2, fill="black")
-        
-    canvas.pack()
-    root.mainloop()
+        bounding_box = (x, y, x + 2, y + 2)
+        draw.ellipse(bounding_box, fill="black")
+    image.save('./storefront/static/createdArt/startingpoints.jpg')
+    print("saved the image of the starting points!")
 
 
 ## DISPLAY IMAGE ##
